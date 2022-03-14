@@ -11,9 +11,9 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title>Thai Hajj</q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <language-switcher />
       </q-toolbar>
     </q-header>
 
@@ -37,6 +37,7 @@
 
 <script lang="ts">
 import EssentialLink from 'components/EssentialLink.vue';
+import LanguageSwitcher from 'components/LanguageSwitcher.vue';
 
 const linksList = [
   {
@@ -90,6 +91,7 @@ export default defineComponent({
 
   components: {
     EssentialLink,
+    LanguageSwitcher,
   },
 
   setup() {

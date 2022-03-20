@@ -54,9 +54,13 @@
         <q-toggle v-model="accept" :label="$t('application.termAndCond')" />
 
         <div>
-          <q-btn label="Submit" type="submit" color="primary" />
           <q-btn
-            label="Reset"
+            :label="$t('application.submit')"
+            type="submit"
+            color="primary"
+          />
+          <q-btn
+            :label="$t('application.reset')"
             type="reset"
             color="primary"
             flat

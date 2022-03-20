@@ -8,5 +8,7 @@ export default {
       empty: 'Please type something',
     },
     close: 'Close',
+    submit: 'Submit',
+    reset: 'Reset',
   },
 };

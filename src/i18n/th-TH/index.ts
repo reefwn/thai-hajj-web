@@ -8,5 +8,7 @@ export default {
       empty: 'กรุณากรอกข้อมูล',
     },
     close: 'ปิด',
+    submit: 'ส่ง',
+    reset: 'ล้าง',
   },
 };

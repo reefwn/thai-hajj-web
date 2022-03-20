@@ -19,8 +19,10 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label header>Social Media</q-item-label>
+        <q-item-label header>Pages</q-item-label>
+        <page-link v-for="link in pageLinks" :key="link.title" v-bind="link" />
 
+        <q-item-label header>Social Media</q-item-label>
         <essential-link
           v-for="link in essentialLinks"
           :key="link.title"
@@ -36,10 +38,26 @@
 </template>
 
 <script lang="ts">
+import PageLink from 'components/PageLink.vue';
 import EssentialLink from 'components/EssentialLink.vue';
 import LanguageSwitcher from 'components/LanguageSwitcher.vue';
 
-const linksList = [
+const pageLinks = [
+  {
+    title: 'Home',
+    caption: 'hompage',
+    icon: 'home',
+    link: '/',
+  },
+  {
+    title: 'Application',
+    caption: 'form',
+    icon: 'assignment',
+    link: 'form',
+  },
+];
+
+const essentialLinks = [
   {
     title: 'Instagram',
     caption: 'arabnewsinthailand',
@@ -54,6 +72,7 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
+    PageLink,
     EssentialLink,
     LanguageSwitcher,
   },
@@ -62,7 +81,8 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
 
     return {
-      essentialLinks: linksList,
+      pageLinks,
+      essentialLinks,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;

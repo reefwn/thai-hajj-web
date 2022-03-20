@@ -6,8 +6,8 @@
     borderless
     emit-value
     map-options
-    behavior="dialog"
-    style="width: 250px"
+    dense
+    style="width: 150px"
   />
 </template>
 

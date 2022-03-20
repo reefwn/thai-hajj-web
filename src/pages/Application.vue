@@ -24,17 +24,32 @@
 
         <q-input
           filled
-          type="number"
-          v-model="age"
-          :label="$t('application.age') + ' *'"
-          lazy-rules
-          :rules="[
-            (val) =>
-              (val !== null && val !== '') || $t('application.error.empty'),
-            (val) =>
-              (val > 0 && val < 100) || $t('application.error.age.limit'),
-          ]"
-        />
+          v-model="dob"
+          mask="date"
+          :label="$t('application.dob') + ' *'"
+        >
+          <template v-slot:append>
+            <q-icon name="event" class="cursor-pointer">
+              <q-popup-proxy
+                ref="qDateProxy"
+                cover
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="dob">
+                  <div class="row items-center justify-end">
+                    <q-btn
+                      v-close-popup
+                      :label="$t('application.close')"
+                      color="primary"
+                      flat
+                    />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
 
         <q-toggle v-model="accept" :label="$t('application.termAndCond')" />
 
@@ -64,13 +79,13 @@ export default {
 
     const firstName = ref(null);
     const lastName = ref(null);
-    const age = ref(null);
+    const dob = ref(null);
     const accept = ref(false);
 
     return {
       firstName,
       lastName,
-      age,
+      dob,
       accept,
 
       onSubmit() {
@@ -94,7 +109,7 @@ export default {
       onReset() {
         firstName.value = null;
         lastName.value = null;
-        age.value = null;
+        dob.value = null;
         accept.value = false;
       },
     };

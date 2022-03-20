@@ -2,13 +2,11 @@ export default {
   application: {
     firstName: 'ชื่อ',
     lastName: 'นามสกุล',
-    age: 'อายุ',
+    dob: 'วันเกิด',
     termAndCond: 'ฉันยอมรับในข้อตกลง',
     error: {
       empty: 'กรุณากรอกข้อมูล',
-      age: {
-        limit: 'กรุณากรอกข้อมูลจริง',
-      },
     },
+    close: 'ปิด',
   },
 };

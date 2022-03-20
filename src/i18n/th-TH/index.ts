@@ -10,5 +10,7 @@ export default {
     close: 'ปิด',
     submit: 'ส่ง',
     reset: 'ล้าง',
+    submitted: 'ส่งสำเร็จ',
+    failToSubmit: 'กรุณายอมรับเงื่อนไขก่อนส่ง',
   },
 };

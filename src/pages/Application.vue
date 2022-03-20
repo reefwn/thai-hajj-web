@@ -3,10 +3,9 @@
     <div class="q-pa-md q-mx-auto" style="max-width: 400px">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input
-          filled
+          outlined
           v-model="firstName"
           :label="$t('application.firstName') + ' *'"
-          lazy-rules
           :rules="[
             (val) => (val && val.length > 0) || $t('application.error.empty'),
           ]"
@@ -27,11 +26,13 @@
           v-model="dob"
           mask="date"
           :label="$t('application.dob') + ' *'"
+          lazy-rules
+          :rules="['date']"
         >
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy
-                ref="qDateProxy"
+                ref="dobRef"
                 cover
                 transition-show="scale"
                 transition-hide="scale"
@@ -72,19 +73,23 @@
   </q-page>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
-import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-export default {
+export default defineComponent({
   name: 'Application',
   setup() {
     const $q = useQuasar();
+    const i18n = useI18n();
 
     const firstName = ref(null);
     const lastName = ref(null);
     const dob = ref(null);
     const accept = ref(false);
+
+    const dobRef = ref(null);
 
     return {
       firstName,
@@ -92,20 +97,22 @@ export default {
       dob,
       accept,
 
+      dobRef,
+
       onSubmit() {
-        if (accept.value !== true) {
-          $q.notify({
-            color: 'red-5',
-            textColor: 'white',
-            icon: 'warning',
-            message: 'You need to accept the license and terms first',
-          });
-        } else {
+        if (accept.value) {
           $q.notify({
             color: 'green-4',
             textColor: 'white',
             icon: 'cloud_done',
-            message: 'Submitted',
+            message: i18n.t('application.submitted'),
+          });
+        } else {
+          $q.notify({
+            color: 'red-5',
+            textColor: 'white',
+            icon: 'warning',
+            message: i18n.t('application.failToSubmit'),
           });
         }
       },
@@ -118,5 +125,5 @@ export default {
       },
     };
   },
-};
+});
 </script>

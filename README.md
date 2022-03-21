@@ -1,37 +1,51 @@
-# thai-hajj (thai-hajj)
+# Thai Hajj
 
-A form application for Hajj
+Hajj form application for Thai
+
+## Demo
+
+https://reefwn.github.io/thai-hajj-web/
 
 ## Install the dependencies
 
-```bash
+```
 yarn
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
-```bash
+```
 quasar dev
 ```
 
 ### Lint the files
 
-```bash
+```
 yarn lint
 ```
 
 ### Format the files
 
-```bash
+```
 yarn format
 ```
 
 ### Build the app for production
 
-```bash
+```
 quasar build
 ```
 
-### Customize the configuration
+## Deploy the app on github page
 
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+```
+yarn deploy
+```
+
+## Technologies & IDE
+
+<div>
+    <img style="float: left" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/220px-Vue.js_Logo_2.svg.png" height="48" alt="vue">
+    <img style="float: left" src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg" height="48" alt="quasar"> &nbsp;
+    <img style="float: left" src="https://code.visualstudio.com/assets/updates/1_35/logo-stable.png" height="48" alt="vscode">
+</div>

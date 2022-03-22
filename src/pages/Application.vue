@@ -1,9 +1,9 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md q-mx-auto" style="max-width: 400px">
+    <div class="q-pa-md q-mx-auto" style="max-width: 600px">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input
-          outlined
+          filled
           v-model="firstName"
           :label="$t('application.firstName') + ' *'"
           :rules="[
@@ -52,6 +52,97 @@
           </template>
         </q-input>
 
+        <q-input
+          filled
+          v-model="idCard"
+          :label="$t('application.idCard') + ' *'"
+          lazy-rules
+          :rules="[
+            (val) => (val && val.length > 0) || $t('application.error.empty'),
+            (val) =>
+              (val && val.length === 13) || $t('application.error.length'),
+          ]"
+        />
+
+        <div class="bg-grey-3 q-mt-md q-mb-lg">
+          <q-expansion-item
+            v-model="passportExpanded"
+            icon="contact_page"
+            :label="$t('application.passport.title')"
+            :caption="$t('application.passport.description')"
+          >
+            <q-card class="bg-grey-3">
+              <q-card-section>
+                <q-input
+                  filled
+                  v-model="passportNumber"
+                  :label="$t('application.passport.number') + ' *'"
+                  lazy-rules
+                  :rules="[
+                    (val) =>
+                      (val && val.length > 0) || $t('application.error.empty'),
+                  ]"
+                />
+
+                <q-input
+                  filled
+                  v-model="passportExiredDate"
+                  mask="date"
+                  :label="$t('application.passport.expiredDate') + ' *'"
+                  lazy-rules
+                  :rules="['date']"
+                >
+                  <template v-slot:append>
+                    <q-icon name="event" class="cursor-pointer">
+                      <q-popup-proxy
+                        ref="passportExiredDateRef"
+                        cover
+                        transition-show="scale"
+                        transition-hide="scale"
+                      >
+                        <q-date v-model="passportExiredDate">
+                          <div class="row items-center justify-end">
+                            <q-btn
+                              v-close-popup
+                              :label="$t('application.close')"
+                              color="primary"
+                              flat
+                            />
+                          </div>
+                        </q-date>
+                      </q-popup-proxy>
+                    </q-icon>
+                  </template>
+                </q-input>
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </div>
+
+        <div class="q-my-lg">
+          <q-uploader
+            style="width: 100%"
+            url="http://localhost:4444/upload"
+            :label="$t('application.selfImage')"
+            auto-upload
+            multiple
+            accept="image/*"
+            @rejected="onRejected"
+          />
+        </div>
+
+        <div class="q-my-lg">
+          <q-uploader
+            style="width: 100%"
+            url="http://localhost:4444/upload"
+            :label="$t('application.housingDocument')"
+            auto-upload
+            multiple
+            accept=".pdf, image/*"
+            @rejected="onRejected"
+          />
+        </div>
+
         <q-toggle v-model="accept" :label="$t('application.termAndCond')" />
 
         <div>
@@ -87,17 +178,40 @@ export default defineComponent({
     const firstName = ref(null);
     const lastName = ref(null);
     const dob = ref(null);
+    const idCard = ref(null);
+    const passportExiredDate = ref(null);
+    const passportNumber = ref(null);
     const accept = ref(false);
 
     const dobRef = ref(null);
+    const passportExpanded = ref(null);
+    const passportExiredDateRef = ref(null);
 
     return {
       firstName,
       lastName,
       dob,
+      idCard,
+      passportExiredDate,
+      passportNumber,
       accept,
 
       dobRef,
+      passportExpanded,
+      passportExiredDateRef,
+
+      checkFileType(files: File[]) {
+        return files.filter((file) =>
+          ['image/jpg', 'image/jpeg', 'image/png'].includes(file.type)
+        );
+      },
+
+      onRejected() {
+        $q.notify({
+          type: 'negative',
+          message: i18n.t('application.error.upload'),
+        });
+      },
 
       onSubmit() {
         if (accept.value) {
@@ -121,6 +235,9 @@ export default defineComponent({
         firstName.value = null;
         lastName.value = null;
         dob.value = null;
+        idCard.value = null;
+        passportExiredDate.value;
+        passportNumber.value = null;
         accept.value = false;
       },
     };

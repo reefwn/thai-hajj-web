@@ -2,10 +2,21 @@ export default {
   application: {
     firstName: 'ชื่อ',
     lastName: 'นามสกุล',
-    dob: 'วันเกิด',
+    dob: 'วันเดือนปีเกิด',
+    idCard: 'เลขบัตรประชาชน',
+    passport: {
+      title: 'พาสปอร์ต',
+      description: 'ข้อมูลเกี่ยวพาสปอร์ต',
+      number: 'เลขที่พาสปอร์ต',
+      expiredDate: 'วันหมดอายุ',
+    },
+    selfImage: 'รูปภาพของคุณ (พื้นหลังสีขาว)',
+    housingDocument: 'ทะเบียนบ้าน',
     termAndCond: 'ฉันยอมรับในข้อตกลง',
     error: {
       empty: 'กรุณากรอกข้อมูล',
+      length: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+      upload: 'ประเภทของไฟล์ไม่ถูกต้อง',
     },
     close: 'ปิด',
     submit: 'ส่ง',

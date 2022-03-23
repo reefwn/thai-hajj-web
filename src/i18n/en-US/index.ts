@@ -21,6 +21,7 @@ export default {
     close: 'Close',
     submit: 'Submit',
     reset: 'Reset',
+    save: 'Save',
     submitted: 'Submitted',
     failToSubmit: 'You need to accept the license and terms first',
   },

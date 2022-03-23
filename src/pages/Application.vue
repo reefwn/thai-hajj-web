@@ -145,19 +145,38 @@
 
         <q-toggle v-model="accept" :label="$t('application.termAndCond')" />
 
-        <div>
-          <q-btn
-            :label="$t('application.submit')"
-            type="submit"
-            color="primary"
-          />
-          <q-btn
-            :label="$t('application.reset')"
-            type="reset"
-            color="primary"
-            flat
-            class="q-ml-sm"
-          />
+        <div class="row justify-between">
+          <div>
+            <q-btn
+              :label="$t('application.submit')"
+              type="submit"
+              color="primary"
+              :loading="submitting"
+            >
+              <template v-slot:loading>
+                <q-spinner-ios />
+              </template>
+            </q-btn>
+            <q-btn
+              :label="$t('application.reset')"
+              type="reset"
+              color="primary"
+              flat
+              class="q-ml-sm"
+            />
+          </div>
+          <div>
+            <q-btn
+              :label="$t('application.save')"
+              type="submit"
+              color="primary"
+              :loading="submitting"
+            >
+              <template v-slot:loading>
+                <q-spinner-ios />
+              </template>
+            </q-btn>
+          </div>
         </div>
       </q-form>
     </div>
@@ -187,6 +206,8 @@ export default defineComponent({
     const passportExpanded = ref(null);
     const passportExiredDateRef = ref(null);
 
+    const submitting = ref(false);
+
     return {
       firstName,
       lastName,
@@ -199,6 +220,8 @@ export default defineComponent({
       dobRef,
       passportExpanded,
       passportExiredDateRef,
+
+      submitting,
 
       checkFileType(files: File[]) {
         return files.filter((file) =>
@@ -215,12 +238,17 @@ export default defineComponent({
 
       onSubmit() {
         if (accept.value) {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: i18n.t('application.submitted'),
-          });
+          // mock time spend
+          submitting.value = true;
+          setTimeout(() => {
+            $q.notify({
+              color: 'green-4',
+              textColor: 'white',
+              icon: 'cloud_done',
+              message: i18n.t('application.submitted'),
+            });
+            submitting.value = false;
+          }, 3000);
         } else {
           $q.notify({
             color: 'red-5',

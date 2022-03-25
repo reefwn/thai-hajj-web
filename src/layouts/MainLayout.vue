@@ -12,8 +12,6 @@
         />
 
         <q-toolbar-title>Thai Hajj</q-toolbar-title>
-
-        <language-switcher />
       </q-toolbar>
     </q-header>
 
@@ -32,6 +30,10 @@
     </q-drawer>
 
     <q-page-container>
+      <div class="row reverse q-my-sm">
+        <language-switcher />
+      </div>
+
       <router-view />
     </q-page-container>
   </q-layout>
@@ -45,7 +47,7 @@ import LanguageSwitcher from 'components/LanguageSwitcher.vue';
 const pageLinks = [
   {
     title: 'Home',
-    caption: 'hompage',
+    caption: 'homepage',
     icon: 'home',
     link: '/',
   },

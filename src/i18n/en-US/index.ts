@@ -1,4 +1,7 @@
 export default {
+  index: {
+    application: 'Start filling form',
+  },
   application: {
     firstName: 'First name',
     lastName: 'Last name',

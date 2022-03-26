@@ -4,9 +4,9 @@
       <q-input
         filled
         v-model="email"
-        :label="$t('login.label.email') + ' *'"
+        :label="$t('register.label.email') + ' *'"
         :rules="[
-          (val) => (val && val.length > 0) || $t('login.error.empty'),
+          (val) => (val && val.length > 0) || $t('register.error.empty'),
           isValidEmail,
         ]"
       />
@@ -15,28 +15,32 @@
         filled
         type="password"
         v-model="password"
-        :label="$t('login.label.password') + ' *'"
+        :label="$t('register.label.password') + ' *'"
         lazy-rules
         :rules="[
-          (val) => (val !== null && val !== '') || $t('login.error.empty'),
+          (val) => (val !== null && val !== '') || $t('register.error.empty'),
+        ]"
+        :hint="$t('register.hint.password')"
+      />
+
+      <q-input
+        filled
+        type="password"
+        v-model="confirmPassword"
+        :label="$t('register.label.confirm_password') + ' *'"
+        lazy-rules
+        :rules="[
+          (val) => (val !== null && val !== '') || $t('register.error.empty'),
+          isPasswordMatched,
         ]"
       />
 
       <div>
         <q-btn
           class="full-width"
-          :label="$t('login.button.submit')"
+          :label="$t('register.button.submit')"
           type="submit"
           color="primary"
-        />
-
-        <q-btn
-          flat
-          class="full-width q-mt-sm"
-          :label="$t('login.button.register')"
-          type="button"
-          color="primary"
-          @click="$router.replace('/register')"
         />
       </div>
     </q-form>
@@ -49,17 +53,19 @@ import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
-  name: 'Login',
+  name: 'Register',
   setup() {
     const $q = useQuasar();
     const i18n = useI18n();
 
     const email = ref(null);
     const password = ref(null);
+    const confirmPassword = ref(null);
 
     return {
       email,
       password,
+      confirmPassword,
 
       isValidEmail(val: string): boolean | string {
         const pattern =
@@ -67,12 +73,24 @@ export default defineComponent({
         return pattern.test(val) || i18n.t('login.error.email');
       },
 
+      isValidPassword(val: string): boolean | string {
+        const pattern =
+          /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
+        return pattern.test(val) || i18n.t('login.error.password');
+      },
+
+      isPasswordMatched(val: string): boolean | string {
+        return (
+          val === password.value || i18n.t('register.error.password_match')
+        );
+      },
+
       onSubmit() {
         $q.notify({
           color: 'green-4',
           textColor: 'white',
           icon: 'cloud_done',
-          message: i18n.t('login.alert.success'),
+          message: i18n.t('register.alert.success'),
         });
       },
     };

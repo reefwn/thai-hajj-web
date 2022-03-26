@@ -1,5 +1,5 @@
 export default {
-  mainlayout: {
+  main_layout: {
     button: {
       login: 'Login',
     },
@@ -22,6 +22,29 @@ export default {
     button: {
       submit: 'Login',
       register: 'register',
+    },
+  },
+  register: {
+    alert: {
+      success: 'registered successfully',
+    },
+    label: {
+      email: 'Email',
+      password: 'Password',
+      confirm_password: 'Confirm password',
+    },
+    hint: {
+      password:
+        'Password must contain at least 8 characters, 1 lowercase, 1 uppercase, 1 number and 1 special character',
+    },
+    error: {
+      empty: 'This field is required',
+      email: 'Invalid email',
+      password: 'Invalid password',
+      password_match: 'Password does not match',
+    },
+    button: {
+      submit: 'สมัครสมาชิก',
     },
   },
   application: {

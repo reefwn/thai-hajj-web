@@ -15,7 +15,7 @@
 
         <q-btn
           flat
-          :label="$t('mainlayout.button.login')"
+          :label="$t('main_layout.button.login')"
           @click="$router.push('/login')"
         />
       </q-toolbar>

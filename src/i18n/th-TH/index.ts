@@ -1,5 +1,5 @@
 export default {
-  mainlayout: {
+  main_layout: {
     button: {
       login: 'เข้าสู่ระบบ',
     },
@@ -24,6 +24,29 @@ export default {
     button: {
       submit: 'เข้าสู่ระบบ',
       register: 'สมัครสมาชิก',
+    },
+  },
+  register: {
+    alert: {
+      success: 'สมัครสมาชิกสำเร็จ',
+    },
+    label: {
+      email: 'อีเมล์',
+      password: 'รหัสผ่าน',
+      confirm_password: 'ยืนยันรหัสผ่าน',
+    },
+    hint: {
+      password:
+        'รหัสผ่านจะต้องประกอบด้วย ตัวอักษรเล็ก ตัวอักษรใหญ่ ตัวเลข อักขระพิเศษ และจำนวนมากกว่า 8 ตัวอักษร',
+    },
+    error: {
+      empty: 'กรุณากรอกข้อมูล',
+      email: 'รูปแบบอีเมล์ไม่ถูกต้อง',
+      password: 'รหัสผ่านไม่ถูกต้อง',
+      password_match: 'รหัสผ่านไม่เหมือนกัน',
+    },
+    button: {
+      submit: 'สมัครสมาชิก',
     },
   },
   application: {

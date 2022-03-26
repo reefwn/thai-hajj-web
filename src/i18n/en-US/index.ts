@@ -1,6 +1,28 @@
 export default {
+  mainlayout: {
+    button: {
+      login: 'Login',
+    },
+  },
   index: {
     application: 'Start filling form',
+  },
+  login: {
+    alert: {
+      success: 'successfully login',
+    },
+    label: {
+      email: 'Email',
+      password: 'Password',
+    },
+    error: {
+      empty: 'This field is required',
+      email: 'Invalid email',
+    },
+    button: {
+      submit: 'Login',
+      register: 'register',
+    },
   },
   application: {
     firstName: 'First name',

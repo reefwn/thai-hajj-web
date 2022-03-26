@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md q-mx-auto" style="max-width: 600px">
+    <div class="q-pa-md q-mx-auto" style="max-width: 500px">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input
           filled

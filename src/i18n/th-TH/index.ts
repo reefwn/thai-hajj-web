@@ -1,6 +1,30 @@
 export default {
+  mainlayout: {
+    button: {
+      login: 'เข้าสู่ระบบ',
+    },
+  },
   index: {
-    application: 'เริ่มกรอกฟอร์ม',
+    button: {
+      application: 'เริ่มกรอกฟอร์ม',
+    },
+  },
+  login: {
+    alert: {
+      success: 'เข้าสู่ระบบสำเร็จ',
+    },
+    label: {
+      email: 'อีเมล์',
+      password: 'รหัสผ่าน',
+    },
+    error: {
+      empty: 'กรุณากรอกข้อมูล',
+      email: 'รูปแบบอีเมล์ไม่ถูกต้อง',
+    },
+    button: {
+      submit: 'เข้าสู่ระบบ',
+      register: 'สมัครสมาชิก',
+    },
   },
   application: {
     firstName: 'ชื่อ',

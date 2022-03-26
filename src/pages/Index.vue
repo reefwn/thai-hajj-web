@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <q-btn
-      :label="$t('index.application')"
+      :label="$t('index.button.application')"
       type="button"
       color="primary"
       @click="$router.replace('/form')"

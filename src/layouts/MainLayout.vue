@@ -12,6 +12,12 @@
         />
 
         <q-toolbar-title>Thai Hajj</q-toolbar-title>
+
+        <q-btn
+          flat
+          :label="$t('mainlayout.button.login')"
+          @click="$router.push('/login')"
+        />
       </q-toolbar>
     </q-header>
 
@@ -30,7 +36,7 @@
     </q-drawer>
 
     <q-page-container>
-      <div class="row reverse q-my-sm">
+      <div class="row reverse q-ma-sm">
         <language-switcher />
       </div>
 

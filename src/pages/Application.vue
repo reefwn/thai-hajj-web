@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md q-mx-auto" style="max-width: 500px">
+    <div class="q-pa-md q-mx-auto" style="max-width: 720px">
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input
           filled
@@ -203,7 +203,7 @@ export default defineComponent({
     const accept = ref(false);
 
     const dobRef = ref(null);
-    const passportExpanded = ref(null);
+    const passportExpanded = ref(false);
     const passportExiredDateRef = ref(null);
 
     const submitting = ref(false);

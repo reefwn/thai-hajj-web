@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md q-mx-auto" style="max-width: 500px">
-    <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+    <q-form @submit="onSubmit" class="q-gutter-md">
       <q-input
         filled
         v-model="email"
@@ -38,6 +38,16 @@
           color="primary"
           @click="$router.replace('/register')"
         />
+
+        <!-- mock login -->
+        <q-btn
+          class="full-width q-mt-xl"
+          icon-right="login"
+          color="secondary"
+          @click="$router.push('application-management')"
+        >
+          Mock Login
+        </q-btn>
       </div>
     </q-form>
   </div>

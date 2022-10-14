@@ -4,7 +4,7 @@
       :label="$t('index.button.application')"
       type="button"
       color="primary"
-      @click="$router.replace('/form')"
+      @click="$router.replace('application')"
     />
   </q-page>
 </template>

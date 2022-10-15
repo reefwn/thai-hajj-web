@@ -6,10 +6,11 @@
   "author": "Yossapol Witayanont <reef_3llen@hotmail.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.vue ./",
     "dev": "npx quasar dev",
+    "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
+    "build": "quasar build",
     "deploy": "npx push-dir --dir=dist/spa --remote=origin --branch=gh-pages"
   },
   "dependencies": {
